@@ -1,9 +1,9 @@
-import { MessageNetwork } from '../chainSelect/ChainSelect'
 import { Website, Websites, WebsiteSelector } from './WebsiteSelector';
 import { MobileHeaderWrapper } from './MobileHeaderWrapper/MobileHeaderWrapper';
 import { HeaderButtons } from './headerComponents/HeaderButtons';
 import classes from "./Header.module.css"
 import { Divider } from '../divider/Divider';
+import { MessageNetwork } from '../chainSelect/chainSelect';
 
 interface HeaderProps{
   headerNav?: React.ReactElement;
