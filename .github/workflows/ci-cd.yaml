@@ -16,16 +16,16 @@ jobs:
         uses: borales/actions-yarn@v4
         with: 
           cmd: install
-          dir: './packages/realt-commons'
+          dir: './packages/realtoken-commons'
       - name: Build
         uses: borales/actions-yarn@v4
         with: 
           cmd: build
-          dir: './packages/realt-commons'
+          dir: './packages/realtoken-commons'
       - name: Publish
         uses: borales/actions-yarn@v4
         with: 
           cmd: publish --access public
-          dir: './packages/realt-commons'
+          dir: './packages/realtoken-commons'
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
