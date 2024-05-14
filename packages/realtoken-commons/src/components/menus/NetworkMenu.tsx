@@ -5,8 +5,7 @@ import {
   Menu,
 } from '@mantine/core';
 import { useDisclosure } from '@mantine/hooks';
-import { ChainList, ChainSelectedIcon } from '../chainSelect/ChainSelect';
-import { Chain, ChainSelectConfig } from '../../types';
+import { ChainList, ChainSelectedIcon } from '../chainSelect/chainSelect';
 
 export function NetworkMenuItems(){
   const { t } = useTranslation('common', { keyPrefix: 'wallet' });
