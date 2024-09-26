@@ -1,0 +1,3 @@
+packages:
+ - 'apps/*'
+ - 'packages/@real-token/*'

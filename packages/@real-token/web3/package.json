@@ -1,0 +1,20 @@
+{
+  "name": "@real-token/web3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@real-token/types": "workspace:^",
+    "@web3modal/ethers5": "^4.1.11",
+    "@web3modal/scaffold-utils": "^4.2.2"
+  },
+  "devDependencies": {
+    "@types/node": "^20.12.12"
+  }
+}

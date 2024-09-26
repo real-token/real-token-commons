@@ -1,15 +1,15 @@
 {
-  "name": "realt-commons-monorepo",
+  "name": "@real-token/utils",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build:all": "pnpm nx run-many -t build -p @real-token/*"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "nx": "^19.1.0"
+    "@types/node": "^20.12.12"
   }
 }

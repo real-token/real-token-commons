@@ -1,0 +1,28 @@
+{
+    "tasksRunnerOperations": {
+        "default": {
+            "runner": "nx/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["build"],
+                "cacheOptions": {
+                    "directory": ".nx/cache",
+                    "policy": "all"
+                }
+            }
+        }
+    },
+    "tasksRunnerOptions": {
+        "default": {
+            "runner": "nx/tasks-runners/default",
+            "options": {
+                "cacheableOperations": ["build", "lint", "test", "e2e"]
+            }
+        }
+    },
+    "targetDefaults": {
+        "build": {
+            "dependsOn": ["^build"]
+        }
+    },
+    "packageManager": "pnpm"
+}
