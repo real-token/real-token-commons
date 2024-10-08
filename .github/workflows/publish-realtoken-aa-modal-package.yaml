@@ -6,6 +6,7 @@ name: build & publish aa-core package
 on:
   release:
     types: [published]
+  workflow_dispatch:
 
 jobs:
   build:
@@ -23,6 +24,8 @@ jobs:
       - name: Install
         working-directory: ./packages/@real-token/aa-modal
         run: yarn install --frozen-lockfile
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: Publish
         working-directory: ./packages/@real-token/aa-modal
         run: yarn publish
