@@ -1,6 +1,6 @@
 {
   "name": "@real-token/aa-modal",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AA Modal component",
   "files": [
     "dist"
@@ -23,13 +23,13 @@
   "scripts": {
     "build": "rollup -c",
     "yalc:publish": "yalc add .",
-    "yalc:push": "yalc push --sig --replace"
+    "yalc:push": "yalc push --sig --replace",
+    "prepublishOnly": "yarn build"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
-    
     "@tabler/icons-react": "^3.19.0",
     "esbuild": "^0.24.0",
     "tslib": "^2.7.0"
