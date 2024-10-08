@@ -21,10 +21,10 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           scope: '@real-token'
       - name: Install
-        working-directory: ./package
+        working-directory: ./packages/@real-token/aa-modal
         run: yarn install --frozen-lockfile
       - name: Publish
-        working-directory: ./package
+        working-directory: ./packages/@real-token/aa-modal
         run: yarn publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
