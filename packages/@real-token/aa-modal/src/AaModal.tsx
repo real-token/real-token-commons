@@ -1,19 +1,24 @@
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { ContextModalProps } from "@mantine/modals";
 import { Flex, Text, Button, LoadingOverlay } from "@mantine/core";
-import { RealtokenLogo } from "./RealtokenLogo";
+import { RealtokenLogo } from "./assets/RealtokenLogo/RealtokenLogo";
 import { ModalButton } from "./Buttons/ModalButton";
 import { IconArrowLeft, IconBrandGoogle, IconWallet } from "@tabler/icons-react";
 import classes from './AaModal.module.css';
-import { useAA } from "@real-token/aa-core";
+import { LoginConfig, ProviderProps, useAA } from "@real-token/aa-core";
 import { Providers } from "./Providers";
 import { ExternalButton } from "./Buttons/ExternalButton/ExternalButton";
 import { MetamaskLogo } from "./assets/Metamask/MetamaskLogo";
 import { CoinbaseWalletLogo } from "./assets/CoinbaseWalletLogo/CoinbaseWalletLogo";
+import { WalletConnectLogo } from "./assets/WalletConnectLogo/WalletConnect";
 
-export const AaModal: FC<ContextModalProps> = ({ context, id, innerProps }) => {
+export const AaModal: FC<ContextModalProps<{ aa: ProviderProps }>> = ({ innerProps, context: { closeModal }, id }) => {
 
-    const { login, loginReady } = useAA();
+    const { loginReady, login, loginConfig, walletAddress } = useAA();
+
+    useEffect(() => {
+        if(walletAddress && walletAddress !== '') closeModal(id);
+    },[walletAddress])
 
     const [connectExternalWallet, setConnectExternalWallet] = useState(false);
 
@@ -47,11 +52,11 @@ export const AaModal: FC<ContextModalProps> = ({ context, id, innerProps }) => {
                         />
                     </ExternalButton>
                     <ExternalButton 
-                        label="Coinbase Wallet"
-                        onClick={() => login('coinbase')}
+                        label="WalletConnect (V2)"
+                        onClick={() => login('wallet-connect-v2')}
                     >
-                        <CoinbaseWalletLogo 
-                            width={56}
+                        <WalletConnectLogo 
+                            // width={56}
                             height={56}
                         />
                     </ExternalButton>
@@ -73,10 +78,11 @@ export const AaModal: FC<ContextModalProps> = ({ context, id, innerProps }) => {
                     <ModalButton
                         leftSection={<IconBrandGoogle />}
                         onClick={() => login('auth', { loginProvider: 'google' }) }
+                        variant={'outline'}
                     >
                         <Text fw={600}>{'Continue with google'}</Text>
                     </ModalButton>
-                    <Providers />
+                    <Providers loginConfig={loginConfig as LoginConfig}/>
                 </Flex>
                 <Text fz={12} c={'dimmed'}>{'We do not share any data related to your social logins.'}</Text>
             </Flex>

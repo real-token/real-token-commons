@@ -5,7 +5,7 @@ import { useAA } from '@real-token/aa-core';
 export const ProviderButton = ({ provider, ...props }: ActionIconProps & { provider: string }) => {
     const { login } = useAA();
     return(
-        <ActionIcon 
+        <ActionIcon
             {...props}
             classNames={{
                 root: classes.root
@@ -14,6 +14,7 @@ export const ProviderButton = ({ provider, ...props }: ActionIconProps & { provi
                 width: '100%',
             }}
             onClick={() => login('auth', { loginProvider: provider })}
+            variant={'outline'}
         >
             {props.children}
         </ActionIcon>

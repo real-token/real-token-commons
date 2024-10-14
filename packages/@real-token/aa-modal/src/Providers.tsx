@@ -1,5 +1,5 @@
 import { IconBrandApple, IconBrandDiscord, IconBrandFacebook, IconBrandGoogle, IconBrandTwitch, IconBrandTwitter, IconMinus, IconPlus } from "@tabler/icons-react";
-import { useAA, LoginConfig } from "@real-token/aa-core";
+import { LoginConfig } from "@real-token/aa-core";
 import { ReactNode, useState } from "react";
 import { ActionIcon, Flex, SimpleGrid, Text } from "@mantine/core";
 import { ProviderButton } from "./Buttons/ProviderButton";
@@ -18,10 +18,14 @@ const loginProvidersToLogo: Map<LoginProvider, ReactNode> = new Map([
 
 const MAX_PROVIDERS_SHOWN = 4;
 
-export const Providers = () => {
+interface ProvidersProps{
+    loginConfig: LoginConfig
+}
+export const Providers = ({ loginConfig }: ProvidersProps) => {
 
-    const { loginConfig } = useAA();
-    const providers = Object.keys(loginConfig as LoginConfig).filter((provider) => provider !== 'google');
+    if(!loginConfig) return null;
+
+    const providers = Object.keys(loginConfig).filter((provider) => provider !== 'google');
 
     const [showAll, setShowAll] = useState(false);
 
@@ -42,6 +46,7 @@ export const Providers = () => {
                         width: '100%',
                     }}
                     onClick={() => setShowAll(!showAll)}
+                    variant={'outline'}
                 >
                     <Flex align={'center'} justify={'center'} gap={4}>
                         {showAll ? <IconMinus size={12}/> : <IconPlus size={12}/>}

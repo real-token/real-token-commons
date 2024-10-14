@@ -8,4 +8,5 @@
 .root:hover{
     border-color: #FAAE1D;
     background-color: #FAAE1D;
+    color: light-dark(black, white);
 }

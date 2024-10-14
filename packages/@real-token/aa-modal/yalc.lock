@@ -1,4 +1,10 @@
 {
   "version": "v1",
-  "packages": {}
+  "packages": {
+    "@real-token/aa-core": {
+      "signature": "56ff6e9d9075596f7ad653ca1027823f",
+      "file": true,
+      "replaced": "^1.0.3"
+    }
+  }
 }
