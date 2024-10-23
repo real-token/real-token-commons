@@ -9,10 +9,29 @@ import { LoginConfig, ProviderProps, useAA } from "@real-token/aa-core";
 import { Providers } from "./Providers";
 import { ExternalButton } from "./Buttons/ExternalButton/ExternalButton";
 import { MetamaskLogo } from "./assets/Metamask/MetamaskLogo";
-import { CoinbaseWalletLogo } from "./assets/CoinbaseWalletLogo/CoinbaseWalletLogo";
 import { WalletConnectLogo } from "./assets/WalletConnectLogo/WalletConnect";
+import i18next from 'i18next';
+import LngDetector from 'i18next-browser-languagedetector';
+import { resources } from './locales';
+import { useTranslation } from "react-i18next";
+import { initReactI18next } from 'react-i18next';
+import { LanguageSwitcher } from "./Buttons/LanguageSwitcher";
+
+i18next
+    .use(LngDetector)
+    .use(initReactI18next)
+    .init({
+        supportedLngs: ['en', 'es', 'fr'],
+        debug: process.env.NODE_ENV === 'development',
+        detection: {
+            order: ['navigator', 'cookie', 'localStorage' ]
+        },
+        resources
+    });
 
 export const AaModal: FC<ContextModalProps<{ aa: ProviderProps }>> = ({ innerProps, context: { closeModal }, id }) => {
+
+    const { t } = useTranslation('main');
 
     const { loginReady, login, loginConfig, walletAddress } = useAA();
 
@@ -32,7 +51,7 @@ export const AaModal: FC<ContextModalProps<{ aa: ProviderProps }>> = ({ innerPro
                             variant={'transparent'}
                             leftSection={<IconArrowLeft size={24} />}
                         >
-                            <Text fz={16}>{'Back'}</Text>
+                            <Text fz={16}>{t('button.back')}</Text>
                         </Button>
                     </Flex>
                     <LoadingOverlay visible={!loginReady} />
@@ -67,44 +86,47 @@ export const AaModal: FC<ContextModalProps<{ aa: ProviderProps }>> = ({ innerPro
     return(
         <Flex direction={"column"} gap={'md'} py={'xl'}>
             <LoadingOverlay visible={!loginReady} />
+            <Flex justify={'end'} pos={'absolute'} top={'1rem'} right={'2rem'}>
+                <LanguageSwitcher />
+            </Flex>
             <RealtokenLogo
                 py={'md'}
                 justify={'center'}
             />
             <Flex direction={"column"} px={'xl'} gap={'xs'}>
-                <Text fz={36} fw={600} className={classes.text}>{'Sign in'}</Text>
-                <Text fz={16} fw={500} className={classes.text}>{'Your Realtoken wallet with one click'}</Text>
+                <Text fz={36} fw={600} className={classes.text}>{t('signin.title')}</Text>
+                <Text fz={16} fw={500} className={classes.text}>{t('signin.subtitle')}</Text>
                 <Flex direction={'column'} gap={'sm'} w={'100%'}>
                     <ModalButton
                         leftSection={<IconBrandGoogle />}
                         onClick={() => login('auth', { loginProvider: 'google' }) }
                         variant={'outline'}
                     >
-                        <Text fw={600}>{'Continue with google'}</Text>
+                        <Text fw={600}>{t('providers.continueWithGoogle')}</Text>
                     </ModalButton>
                     <Providers loginConfig={loginConfig as LoginConfig}/>
                 </Flex>
-                <Text fz={12} c={'dimmed'}>{'We do not share any data related to your social logins.'}</Text>
+                <Text fz={12} c={'dimmed'}>{t('privacyPolicy')}</Text>
             </Flex>
             <Flex gap={'xs'} align={'center'} w={'100%'} px={'20%'}>
                 <div className={classes.line} />
-                <Text fz={16} c={'dimmed'}>{'or'}</Text>
+                <Text fz={16} c={'dimmed'}>{t('providers.or')}</Text>
                 <div className={classes.line} />
             </Flex>
-            <Flex gap={'md'} w={'100%'} px={'10%'} justify={'center'}>
+            <Flex direction={'column'} gap={'sm'} w={'100%'} px={'10%'} justify={'center'}>
                 <Button
                     size={'xs'}
                     color={'#FAAE1D'}
                     leftSection={<IconWallet size={18} />}
                     onClick={() => setConnectExternalWallet(true)}
                 >
-                    {'Connect external wallet'}
+                    {t('providers.connectExternalWallet')}
                 </Button>
                 <Button
                     size={'xs'}
                     color={"#156CAB"}
                 >
-                    {'I need help'}
+                    {t('help')}
                 </Button>
             </Flex>
         </Flex>

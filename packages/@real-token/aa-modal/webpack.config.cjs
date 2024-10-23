@@ -9,6 +9,8 @@ const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 
 const pkg = require("./package.json");
 
+
+
 const currentPkg = require("./package.json");
 const runtimeVersion = currentPkg.peerDependencies["@babel/runtime"];
 const babelLoaderOptions = {
@@ -88,7 +90,12 @@ const commonConfig = {
         },
     ]
    },              
-  externals: [...allDeps, /^(@babel\/runtime)/i,  nodeExternals()],
+  externals: [...allDeps, /^(@babel\/runtime)/i],
+  // includes: [
+  //   'i18next',
+  //   'i18next-browser-languagedetector',
+  //   'react-i18next'
+  // ],
   optimization: {
     minimize: false
   },

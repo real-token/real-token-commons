@@ -33,12 +33,16 @@
     "@babel/core": "^7.24.7",
     "@babel/runtime": "^7.24.7",
     "@tabler/icons-react": "^3.19.0",
+    "i18next": "^23.16.2",
+    "i18next-browser-languagedetector": "^8.0.0",
+    "react-country-flag": "^3.1.0",
+    "react-i18next": "^15.1.0",
     "tslib": "^2.7.0"
   },
   "peerDependencies": {
     "@mantine/core": "^7.13.2",
     "@mantine/modals": "^7.13.2",
-    "@real-token/aa-core": "^1.0.9",
+    "@real-token/aa-core": "^1.1.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   },
@@ -51,7 +55,7 @@
     "@babel/runtime": "^7.24.7",
     "@mantine/core": "^7.13.2",
     "@mantine/modals": "^7.13.2",
-    "@real-token/aa-core": "^1.0.8",
+    "@real-token/aa-core": "^1.1.5",
     "@types/node": "^22.7.4",
     "@types/react": "^18.3.3",
     "@types/react-dom": "^18.3.0",
