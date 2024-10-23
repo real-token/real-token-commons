@@ -1,7 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { ContextModalProps } from "@mantine/modals";
 import { Flex, Text, Button, LoadingOverlay } from "@mantine/core";
-import { RealtokenLogo } from "./assets/RealtokenLogo/RealtokenLogo";
+import { RealtokenLogoLight } from "./assets/RealtokenLogo/RealtokenLogoLight";
+import { RealtokenLogoDark } from "./assets/RealtokenLogo/RealtokenLogoDark";
 import { ModalButton } from "./Buttons/ModalButton";
 import { IconArrowLeft, IconBrandGoogle, IconWallet } from "@tabler/icons-react";
 import classes from './AaModal.module.css';
@@ -55,9 +56,15 @@ export const AaModal: FC<ContextModalProps<{ aa: ProviderProps }>> = ({ innerPro
                         </Button>
                     </Flex>
                     <LoadingOverlay visible={!loginReady} />
-                    <RealtokenLogo
+                    <RealtokenLogoLight
                         py={'md'}
                         justify={'center'}
+                        darkHidden
+                    />
+                    <RealtokenLogoDark 
+                        py={'md'}
+                        justify={'center'}
+                        lightHidden
                     />
                 </Flex>
                 <Flex gap={'lg'} justify={'center'}>
@@ -89,9 +96,15 @@ export const AaModal: FC<ContextModalProps<{ aa: ProviderProps }>> = ({ innerPro
             <Flex justify={'end'} pos={'absolute'} top={'1rem'} right={'2rem'}>
                 <LanguageSwitcher />
             </Flex>
-            <RealtokenLogo
+            <RealtokenLogoLight
                 py={'md'}
                 justify={'center'}
+                darkHidden
+            />
+            <RealtokenLogoDark 
+                py={'md'}
+                justify={'center'}
+                lightHidden
             />
             <Flex direction={"column"} px={'xl'} gap={'xs'}>
                 <Text fz={36} fw={600} className={classes.text}>{t('signin.title')}</Text>

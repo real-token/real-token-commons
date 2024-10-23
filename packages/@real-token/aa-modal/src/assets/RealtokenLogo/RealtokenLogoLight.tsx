@@ -1,7 +1,7 @@
 import { Flex, FlexProps } from "@mantine/core";
 import { Logo } from "./Logo";
 
-export const RealtokenLogo = ({ ...props }: FlexProps) => {
+export const RealtokenLogoLight = ({ ...props }: FlexProps) => {
     return(
         <Flex align={'center'} gap={'sm'} {...props}>
             {/* <img src={realtokenLogo} style={{ height: '52px', width: '52px' }}/> */}
