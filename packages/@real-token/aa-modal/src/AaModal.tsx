@@ -4,23 +4,17 @@ import { Flex, Text, Button, LoadingOverlay } from "@mantine/core";
 import { RealtokenLogoLight } from "./assets/RealtokenLogo/RealtokenLogoLight";
 import { RealtokenLogoDark } from "./assets/RealtokenLogo/RealtokenLogoDark";
 import { ModalButton } from "./Buttons/ModalButton";
-import {
-  IconArrowLeft,
-  IconBrandGoogle,
-  IconWallet,
-} from "@tabler/icons-react";
+import { IconBrandGoogle, IconWallet } from "@tabler/icons-react";
 import classes from "./AaModal.module.css";
 import { ForceWalletParams, LoginConfig, useAA } from "@real-token/aa-core";
 import { Providers } from "./Providers";
-import { ExternalButton } from "./Buttons/ExternalButton/ExternalButton";
-import { MetamaskLogo } from "./assets/Metamask/MetamaskLogo";
-import { WalletConnectLogo } from "./assets/WalletConnectLogo/WalletConnect";
 import i18next from "i18next";
 import LngDetector from "i18next-browser-languagedetector";
 import { resources } from "./locales";
 import { useTranslation } from "react-i18next";
 import { initReactI18next } from "react-i18next";
 import { LanguageSwitcher } from "./Buttons/LanguageSwitcher";
+import { AdvancedView } from "./AdvancedView";
 
 i18next
   .use(LngDetector)
@@ -55,38 +49,7 @@ export const AaModal: FC<ContextModalProps<ModalProps>> = ({
   const [connectExternalWallet, setConnectExternalWallet] = useState(false);
 
   if (connectExternalWallet) {
-    return (
-      <Flex direction={"column"} gap={"md"} py={"xl"}>
-        <Flex direction={"column"} gap={"xs"}>
-          <Flex w={"100%"} justify={"start"}>
-            <Button
-              onClick={() => setConnectExternalWallet(false)}
-              variant={"transparent"}
-              leftSection={<IconArrowLeft size={24} />}
-            >
-              <Text fz={16}>{t("button.back")}</Text>
-            </Button>
-          </Flex>
-          <LoadingOverlay visible={!loginReady} />
-          <RealtokenLogoLight py={"md"} justify={"center"} darkHidden />
-          <RealtokenLogoDark py={"md"} justify={"center"} lightHidden />
-        </Flex>
-        <Flex gap={"lg"} justify={"center"}>
-          <ExternalButton label="Metamask" onClick={() => login("metamask")}>
-            <MetamaskLogo width={56} height={56} />
-          </ExternalButton>
-          <ExternalButton
-            label="WalletConnect (V2)"
-            onClick={() => login("wallet-connect-v2")}
-          >
-            <WalletConnectLogo
-              // width={56}
-              height={56}
-            />
-          </ExternalButton>
-        </Flex>
-      </Flex>
-    );
+    return <AdvancedView onBack={() => setConnectExternalWallet(false)} />;
   }
   return (
     <Flex direction={"column"} gap={"md"} py={"xl"}>
