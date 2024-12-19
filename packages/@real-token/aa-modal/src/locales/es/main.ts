@@ -24,4 +24,8 @@ export const main = {
       'Al hacer clic en "aceptar" confirmas con la comprensión de que el propietario de la cuenta AA será la dirección con la que estás conectado a la billetera externa utilizada.',
     acceptButton: "Aceptar",
   },
+  emailPasswordless: {
+    title: "Conecta con tu email",
+    subtitle: "Introduce tu email",
+  },
 };

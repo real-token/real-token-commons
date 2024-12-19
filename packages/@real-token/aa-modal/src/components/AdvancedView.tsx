@@ -1,14 +1,15 @@
 import { Button, Flex, LoadingOverlay, Text } from "@mantine/core";
 import { IconArrowLeft } from "@tabler/icons-react";
-import { RealtokenLogoDark } from "./assets/RealtokenLogo/RealtokenLogoDark";
-import { RealtokenLogoLight } from "./assets/RealtokenLogo/RealtokenLogoLight";
+import { RealtokenLogoDark } from "../assets/RealtokenLogo/RealtokenLogoDark";
+import { RealtokenLogoLight } from "../assets/RealtokenLogo/RealtokenLogoLight";
 import { useAA } from "@real-token/aa-core";
 import { ExternalButton } from "./Buttons/ExternalButton/ExternalButton";
-import { MetamaskLogo } from "./assets/Metamask/MetamaskLogo";
-import { WalletConnectLogo } from "./assets/WalletConnectLogo/WalletConnect";
+import { MetamaskLogo } from "../assets/Metamask/MetamaskLogo";
+import { WalletConnectLogo } from "../assets/WalletConnectLogo/WalletConnect";
 import { useAtom } from "jotai";
-import { advancedExternalWalletTermsAcceptedAtom } from "./state";
+import { advancedExternalWalletTermsAcceptedAtom } from "../state";
 import { useTranslation } from "react-i18next";
+import { RealTokenLogo } from "../assets/RealtokenLogo/RealTokenLogo";
 
 interface AdvancedViewProps {
   onBack: () => void;
@@ -35,8 +36,7 @@ export const AdvancedView = ({ onBack }: AdvancedViewProps) => {
           </Button>
         </Flex>
         <LoadingOverlay visible={!loginReady} />
-        <RealtokenLogoLight py={"md"} justify={"center"} darkHidden />
-        <RealtokenLogoDark py={"md"} justify={"center"} lightHidden />
+        <RealTokenLogo />
       </Flex>
       {!advancedExternalWalletTermsAccepted ? (
         <Flex direction={"column"} gap={"md"} px={"10%"}>

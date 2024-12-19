@@ -24,4 +24,8 @@ export const main = {
       'En cliquant sur "accepter" vous confirmez avoir compris que le propriétaire du compte AA sera l\'adresse avec laquelle vous êtes connecté sur le portefeuille externe utilisé.',
     acceptButton: "Accepter",
   },
+  emailPasswordless: {
+    title: "Se connecter avec email",
+    subtitle: "Entrez votre email",
+  },
 };

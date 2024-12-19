@@ -1,1 +1,1 @@
-export { AaModal } from './AaModal';
+export { AaModal } from "./components/AaModal";
